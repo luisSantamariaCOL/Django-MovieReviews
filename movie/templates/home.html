@@ -22,9 +22,16 @@
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
-      {% if searchTerm %}
-      <p>Searching for {{ searchTerm }}</p>
-      {% endif %}
+      <p>Searching for: {{ searchTerm }}</p>
+      {% for movie in movies %}
+        <h2>{{ movie.title }}</h2>
+        <h3>{{ movie.description }}</h3>
+        <img src="{{ movie.image.url }}" alt="" width="270px" height="480px">
+        {% if movie.url %}
+          <a href="{{ movie.url }}">Movie Link</a>
+        {% endif %}
+
+      {% endfor %}
       <br />
       <br />
       <h2>Join our mailing list:</h2>
