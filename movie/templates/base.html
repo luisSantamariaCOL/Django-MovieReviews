@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Movies App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
 
-        <div class="container">
-          <a href="{% url 'home' %}" class="navbar-brand">Movies</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto">
-              <a class="nav-link" href="{% url 'news' %}">News</a>
-              <a class="nav-link" href="#">Login</a>
-              <a class="nav-link" href="#">Sign Up</a>
-            </div>
-          </div>
-        </div>
-      </nav>
+<head>
+  <title>Movies App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <!-- Nav bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
 
     <div class="container">
-        {% block content %}
-        {% endblock content %}
+      <a href="{% url 'home' %}" class="navbar-brand">Movies</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="{% url 'news' %}">News</a>
+          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="#">Sign Up</a>
+        </div>
+      </div>
     </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-light 
+    text-muted mt-4">
+    <div class="text-center p-4">
+      © Copyright -
+      <a class="text-reset fw-bold text-decoration-none" target="_blank" href="https://twitter.com/greglim81">
+        Luis Santamaria
+      </a> -
+      <a class="text-reset fw-bold text-decoration-none" target="_blank" href="https://twitter.com/danielgarax">
+        Daniel Correa (Author of Book: Django 4 for the impatient)
+      </a>
+    </div>
+  </footer>
+
+
 </body>
+
 </html>
