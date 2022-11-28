@@ -15,7 +15,9 @@
           <div class="card">
             <img class="card-img-top" src="{{ movie.image.url }}" height="600em">
             <div class="card-body">
-              <h5 class="card-title fw-bold"> {{ movie.title }}</h5>
+              <a href="{% url 'detail' movie.id %}">
+                <h5 class="card-title fw-bold"> {{ movie.title }}</h5>
+              </a>
               <div style="height: 8rem; padding-bottom: 20px;">
                 <p class="card-text"> {{ movie.description }}</p>
               </div>
