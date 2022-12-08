@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UserCreateForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.shortcuts import redirect
@@ -12,7 +13,7 @@ def signupaccount(request):
         to register new users.
     """
     if request.method == 'GET':
-        return render(request, 'signupaccount.html', {'form': UserCreationForm})
+        return render(request, 'signupaccount.html', {'form': UserCreateForm})
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:
@@ -23,9 +24,9 @@ def signupaccount(request):
             except IntegrityError:
                 return render(request,
                 'signupaccount.html',
-                {'form': UserCreationForm,
+                {'form': UserCreateForm,
                 'error': 'That username has already been taken. Please choose a new username'})
         else:
             return render(request, 'signupaccount.html',
-            {'form': UserCreationForm, 'error': 'Passwords do not match'})
+            {'form': UserCreateForm, 'error': 'Passwords do not match'})
 
