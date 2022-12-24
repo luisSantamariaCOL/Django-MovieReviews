@@ -15,13 +15,13 @@ def signupaccount(request):
     if request.method == 'GET': # When the user first visits the page (localhost:8000/accounts/signupaccount), show them a blank form
         return render(request, 'signupaccount.html', {'form': UserCreateForm})
     else: # When the user submits the form, create a new user
-        if request.POST['password1'] == request.POST['password2']: 
+        if request.POST['password1'] == request.POST['password2']: # Check if the two passwords match
             try:
-                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password1']) # Create a new user
                 user.save()
                 login(request, user)
                 return redirect('home')
-            except IntegrityError:
+            except IntegrityError: # If the user tries to create an account with a username that already exists, show them an error message
                 return render(request,
                 'signupaccount.html',
                 {'form': UserCreateForm,
