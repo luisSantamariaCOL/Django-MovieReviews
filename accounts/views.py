@@ -2,8 +2,10 @@ from django.shortcuts import render # To render the signupaccount.html template
 from django.contrib.auth.forms import UserCreationForm # This is the form provided by Django to easily create a signup form to register new users
 from .forms import UserCreateForm # This is the form we created in forms.py
 from django.contrib.auth.models import User # To create a new user
+from django.contrib.auth.forms import AuthenticationForm # To create a login form
 from django.contrib.auth import login # To log the user in after they have successfully created an account
 from django.contrib.auth import logout # To log the user out
+from django.contrib.auth import authenticate # To authenticate the user when they try to log in
 from django.shortcuts import redirect # To redirect the user to the home page after they have successfully created an account
 from django.db import IntegrityError # To handle the error when a user tries to create an account with a username that already exists    
 
@@ -35,3 +37,21 @@ def signupaccount(request):
 def logoutaccount(request):
     logout(request)
     return redirect('home')
+
+
+def loginaccount(request):
+    if request.method == 'GET':
+        return render(request, 'loginaccount.html', {'form': AuthenticationForm})
+    else:
+        user = authenticate(request,
+            username=request.POST['username'],
+            password=request.POST['password'])
+        if user is None:
+            return render(request, 'loginaccount.html',
+            {'form': AuthenticationForm(),
+            'error': 'Username and password did not match'})
+        else:
+            login(request, user)
+            return redirect('home')
+
+
