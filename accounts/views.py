@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm # This is the form provid
 from .forms import UserCreateForm # This is the form we created in forms.py
 from django.contrib.auth.models import User # To create a new user
 from django.contrib.auth import login # To log the user in after they have successfully created an account
+from django.contrib.auth import logout # To log the user out
 from django.shortcuts import redirect # To redirect the user to the home page after they have successfully created an account
 from django.db import IntegrityError # To handle the error when a user tries to create an account with a username that already exists    
 
@@ -30,3 +31,7 @@ def signupaccount(request):
             return render(request, 'signupaccount.html',
             {'form': UserCreateForm, 'error': 'Passwords do not match'})
 
+
+def logoutaccount(request):
+    logout(request)
+    return redirect('home')
