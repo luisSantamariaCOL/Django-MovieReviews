@@ -8,6 +8,7 @@ from django.contrib.auth import logout # To log the user out
 from django.contrib.auth import authenticate # To authenticate the user when they try to log in
 from django.shortcuts import redirect # To redirect the user to the home page after they have successfully created an account
 from django.db import IntegrityError # To handle the error when a user tries to create an account with a username that already exists    
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def signupaccount(request):
@@ -33,7 +34,7 @@ def signupaccount(request):
             return render(request, 'signupaccount.html',
             {'form': UserCreateForm, 'error': 'Passwords do not match'})
 
-
+@login_required
 def logoutaccount(request):
     logout(request)
     return redirect('home')
